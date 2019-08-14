@@ -4,6 +4,72 @@ A YouTube clone made with ReactJS.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Learnings
+
+1. Arrow functions in JSX do not have their own 'this', whereas a normal function does. So if we wish to use normal function syntax, we need to bind the function with the class where the function is defined, otherwise 'this' in the function won't be referring to the class.
+   **tldr**: Normal functions - bind ; Arrow functions - no bind.
+
+- Normal function example
+
+```
+constrctor(props) {
+  ...
+  this.handleClick = this.handleClick.bind(this);
+}
+
+handleClick() {
+  this.setState(state => ({
+    isToggleOn: !state.isToggleOn
+  }));
+}
+```
+
+- Arrow function example (without binding)
+
+```
+handleChange = event => {
+this.setState({ searchTerm: event.target.value });
+};
+```
+
+2. Events
+
+- When we implement something like a Search Bar or something that changes, we would usually have a function called onChange. The way we capture the 'changed' item is by calling **event.target.value**
+
+```
+handleChange = event => {
+this.setState({ searchTerm: event.target.value });
+};
+```
+
+3. Structuring
+
+- The practice below allows efficient and clean code with variables. Introduced in ES6 I believe (I may be wrong).
+
+```
+const { searchTerm } = this.state;
+const { onFormSubmit } = this.props;
+```
+
+4. Async/Await
+
+- Stops execution of the code until something is fetched.
+
+```
+handleSubmit = async searchTerm => {
+		const response = await youtube.get('search', {
+			params: {
+				part: 'snippet',
+				maxResults: 5,
+				key: 'AIzaSyBIcOnnRqzrc4KVC-1_2AXpEn60ZW0dSM0',
+				q: searchTerm
+			}
+		});
+
+		console.log(response);
+	};
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
