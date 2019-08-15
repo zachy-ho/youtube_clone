@@ -70,6 +70,16 @@ handleSubmit = async searchTerm => {
 	};
 ```
 
+5. React.Fragment
+
+- Used when we wish for a component to return a list of children. Instead of using `<div></div>` to put everything under one parent (which may not be proper/intended HTML), we use `<React.Fragment>`
+- Examples and reference: https://reactjs.org/docs/fragments.html
+
+6. Template literals
+
+- String literals allowing embedded expressions.
+- Placeholders: `${expression}`
+
 ## Available Scripts
 
 In the project directory, you can run:
