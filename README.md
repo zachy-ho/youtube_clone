@@ -80,6 +80,10 @@ handleSubmit = async searchTerm => {
 - String literals allowing embedded expressions.
 - Placeholders: `${expression}`
 
+7. Rendering the whole application in the root of our directory (html page with ID=root)
+
+- `ReactDOM.render(<App/>, document.querySelector('#root'));` in index.js
+
 ## Available Scripts
 
 In the project directory, you can run:
